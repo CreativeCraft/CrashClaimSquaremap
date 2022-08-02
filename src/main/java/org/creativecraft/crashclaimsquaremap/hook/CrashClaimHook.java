@@ -40,7 +40,7 @@ public class CrashClaimHook {
         Long2ObjectOpenHashMap<ArrayList<Integer>> claimChunks = plugin.getCrashClaim().getDataManager().getClaimChunkMap(uuid);
 
         claimChunks.values().forEach(x -> claims.add(
-            CrashClaim.getPlugin().getApi().getClaim(x.get(0))
+            plugin.getCrashClaim().getApi().getClaim(x.get(0))
         ));
 
         if (claims.isEmpty()) {
