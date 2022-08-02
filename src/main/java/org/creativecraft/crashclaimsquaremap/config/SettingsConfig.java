@@ -125,16 +125,7 @@ public class SettingsConfig {
      *
      * @return FileConfiguration
      */
-    public FileConfiguration getSettings() {
+    public FileConfiguration getConfig() {
         return settings;
-    }
-
-    /**
-     * Retrieve the config file.
-     *
-     * @return File
-     */
-    public File getSettingsFile() {
-        return settingsFile;
     }
 }

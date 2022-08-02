@@ -30,16 +30,16 @@ public class SquaremapHook {
 
             if (CrashClaimHook.isWorldEnabled(world.getUID())) {
                 SimpleLayerProvider provider = SimpleLayerProvider
-                    .builder(plugin.getSettings().getSettings().getString("settings.control.label", "CrashClaim"))
-                    .showControls(plugin.getSettings().getSettings().getBoolean("settings.control.show"))
-                    .defaultHidden(plugin.getSettings().getSettings().getBoolean("settings.control.hide"))
+                    .builder(plugin.getSettings().getConfig().getString("settings.control.label", "CrashClaim"))
+                    .showControls(plugin.getSettings().getConfig().getBoolean("settings.control.show"))
+                    .defaultHidden(plugin.getSettings().getConfig().getBoolean("settings.control.hide"))
                     .build();
 
                 value.layerRegistry().register(Key.of("crashclaim_" + world.getUID()), provider);
 
                 SquaremapTask task = new SquaremapTask(plugin, world.getUID(), provider);
 
-                task.runTaskTimerAsynchronously(plugin, 0, 20L * plugin.getSettings().getSettings().getInt("settings.update-interval"));
+                task.runTaskTimerAsynchronously(plugin, 0, 20L * plugin.getSettings().getConfig().getInt("settings.update-interval"));
 
                 this.provider.put(world.getUID(), task);
             }

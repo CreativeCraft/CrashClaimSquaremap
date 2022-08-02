@@ -68,12 +68,12 @@ public class SquaremapTask extends BukkitRunnable {
         MarkerOptions.Builder options = MarkerOptions
             .builder()
             .strokeColor(plugin.getSettings().getStrokeColor())
-            .strokeWeight(plugin.getSettings().getSettings().getInt("settings.style.stroke.weight"))
-            .strokeOpacity(plugin.getSettings().getSettings().getDouble("settings.style.stroke.opacity"))
+            .strokeWeight(plugin.getSettings().getConfig().getInt("settings.style.stroke.weight"))
+            .strokeOpacity(plugin.getSettings().getConfig().getDouble("settings.style.stroke.opacity"))
             .fillColor(plugin.getSettings().getFillColor())
-            .fillOpacity(plugin.getSettings().getSettings().getDouble("settings.style.fill.opacity"))
+            .fillOpacity(plugin.getSettings().getConfig().getDouble("settings.style.fill.opacity"))
             .clickTooltip(
-                plugin.getSettings().getSettings().getString("settings.tooltip.claim")
+                plugin.getSettings().getConfig().getString("settings.tooltip.claim")
                     .replace("{world}", world.getName())
                     .replace("{id}", Long.toString(claim.getId()))
                     .replace("{owner}", getPlayerName(claim.getOwner()))
