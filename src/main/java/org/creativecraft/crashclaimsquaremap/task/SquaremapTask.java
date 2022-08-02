@@ -43,9 +43,9 @@ public class SquaremapTask extends BukkitRunnable {
     private void updateClaims() {
         provider.clearMarkers();
 
-        plugin.getCrashClaimHook().getClaims(this.world)
-            .stream()
-            .filter(claim -> claim.getWorld().equals(this.world))
+        plugin
+            .getCrashClaimHook()
+            .getClaims(this.world)
             .forEach(this::handleClaim);
     }
 
