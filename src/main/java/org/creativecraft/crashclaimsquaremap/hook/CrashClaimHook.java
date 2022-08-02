@@ -76,7 +76,7 @@ public class CrashClaimHook {
         List<SubClaim> subclaims = claim.getSubClaims();
 
         if (subclaims == null || subclaims.size() == 0) {
-            return "None";
+            return plugin.getSettings().getConfig().getString("settings.tooltip.none");
         }
 
         return subclaims.stream().map(BaseClaim::getName).collect(Collectors.joining(", "));
