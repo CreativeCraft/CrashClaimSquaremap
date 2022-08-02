@@ -1,0 +1,7 @@
+name: CrashClaimSquaremap
+version: "${version}"
+description: "A squaremap implementation for CrashClaim."
+authors: [Log1x, l3st4t]
+main: org.creativecraft.crashclaimsquaremap.CrashClaimSquaremap
+api-version: "1.18"
+depend: [CrashClaim, squaremap]
