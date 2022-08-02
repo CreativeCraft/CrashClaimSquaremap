@@ -7,12 +7,12 @@ import org.creativecraft.crashclaimsquaremap.CrashClaimSquaremap;
 import java.awt.Color;
 import java.io.File;
 
-public class Settings {
+public class SettingsConfig {
     private final CrashClaimSquaremap plugin;
-    private FileConfiguration config;
-    private File configFile;
+    private FileConfiguration settings;
+    private File settingsFile;
 
-    public Settings(CrashClaimSquaremap plugin) {
+    public SettingsConfig(CrashClaimSquaremap plugin) {
         this.plugin = plugin;
         this.register();
     }
@@ -21,14 +21,14 @@ public class Settings {
      * Register the config.
      */
     public void register() {
-        configFile = new File(plugin.getDataFolder(), "settings.yml");
+        settingsFile = new File(plugin.getDataFolder(), "settings.yml");
 
-        if (!configFile.exists()) {
-            configFile.getParentFile().mkdirs();
+        if (!settingsFile.exists()) {
+            settingsFile.getParentFile().mkdirs();
             plugin.saveResource("settings.yml", false);
         }
 
-        config = YamlConfiguration.loadConfiguration(configFile);
+        settings = YamlConfiguration.loadConfiguration(settingsFile);
 
         setDefaults();
     }
@@ -37,20 +37,20 @@ public class Settings {
      * Set the config defaults.
      */
     public void setDefaults() {
-        config.addDefault("settings.update-interval", 300);
+        settings.addDefault("settings.update-interval", 300);
 
-        config.addDefault("settings.control.label", "CrashClaim");
-        config.addDefault("settings.control.show", true);
-        config.addDefault("settings.control.hide-by-default", false);
+        settings.addDefault("settings.control.label", "CrashClaim");
+        settings.addDefault("settings.control.show", true);
+        settings.addDefault("settings.control.hide-by-default", false);
 
-        config.addDefault("settings.style.stroke.color", colorToHex(Color.GREEN));
-        config.addDefault("settings.style.stroke.weight", 1);
-        config.addDefault("settings.style.stroke.opacity", 1.0D);
+        settings.addDefault("settings.style.stroke.color", colorToHex(Color.GREEN));
+        settings.addDefault("settings.style.stroke.weight", 1);
+        settings.addDefault("settings.style.stroke.opacity", 1.0D);
 
-        config.addDefault("settings.style.fill.color", colorToHex(Color.GREEN));
-        config.addDefault("settings.style.fill.opacity", 0.2D);
+        settings.addDefault("settings.style.fill.color", colorToHex(Color.GREEN));
+        settings.addDefault("settings.style.fill.opacity", 0.2D);
 
-        config.addDefault(
+        settings.addDefault(
             "settings.tooltip.claim",
             """
                 Claim Name: <span style="font-weight:bold;">{name}</span><br/>
@@ -60,10 +60,10 @@ public class Settings {
                 Exit Message: <span style="font-weight:bold;">{exitmessage}</span>"""
         );
 
-        config.options().copyDefaults(true);
+        settings.options().copyDefaults(true);
 
         try {
-            config.save(configFile);
+            settings.save(settingsFile);
         } catch (Exception e) {
             //
         }
@@ -76,7 +76,7 @@ public class Settings {
      */
     public Color getStrokeColor() {
         return hexToColor(
-            config.getString("settings.style.stroke.color")
+            settings.getString("settings.style.stroke.color")
         );
     }
 
@@ -87,7 +87,7 @@ public class Settings {
      */
     public Color getFillColor() {
         return hexToColor(
-            config.getString("settings.style.fill.color")
+            settings.getString("settings.style.fill.color")
         );
     }
 
@@ -125,8 +125,8 @@ public class Settings {
      *
      * @return FileConfiguration
      */
-    public FileConfiguration getConfig() {
-        return config;
+    public FileConfiguration getSettings() {
+        return settings;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Settings {
      *
      * @return File
      */
-    public File getConfigFile() {
-        return configFile;
+    public File getSettingsFile() {
+        return settingsFile;
     }
 }

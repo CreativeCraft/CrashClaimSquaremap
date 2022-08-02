@@ -2,14 +2,14 @@ package org.creativecraft.crashclaimsquaremap;
 
 import net.crashcraft.crashclaim.CrashClaim;
 import org.bstats.bukkit.MetricsLite;
-import org.creativecraft.crashclaimsquaremap.config.Settings;
+import org.creativecraft.crashclaimsquaremap.config.SettingsConfig;
 import org.creativecraft.crashclaimsquaremap.hook.CrashClaimHook;
 import org.creativecraft.crashclaimsquaremap.hook.SquaremapHook;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CrashClaimSquaremap extends JavaPlugin {
     public static CrashClaimSquaremap plugin;
-    private Settings settings;
+    private SettingsConfig settingsConfig;
     private SquaremapHook squaremapHook;
     private CrashClaim crashClaim;
     private CrashClaimHook crashClaimHook;
@@ -44,7 +44,7 @@ public class CrashClaimSquaremap extends JavaPlugin {
      * Register the plugin config.
      */
     public void registerSettings() {
-        settings = new Settings(this);
+        settingsConfig = new SettingsConfig(this);
     }
 
     /**
@@ -52,8 +52,8 @@ public class CrashClaimSquaremap extends JavaPlugin {
      *
      * @return Config
      */
-    public Settings getSettings() {
-        return settings;
+    public SettingsConfig getSettings() {
+        return settingsConfig;
     }
 
     /**
