@@ -13,6 +13,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashSet;
 import java.util.UUID;
 
 public class SquaremapTask extends BukkitRunnable {
@@ -43,10 +44,15 @@ public class SquaremapTask extends BukkitRunnable {
     private void updateClaims() {
         provider.clearMarkers();
 
-        plugin
+        HashSet<Claim> claims = plugin
             .getCrashClaimHook()
-            .getClaims(this.world)
-            .forEach(this::handleClaim);
+            .getClaims(this.world);
+
+        if (claims == null || claims.isEmpty()) {
+            return;
+        }
+
+        claims.forEach(this::handleClaim);
     }
 
     /**
