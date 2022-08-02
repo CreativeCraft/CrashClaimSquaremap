@@ -90,7 +90,7 @@ public class CrashClaimHook {
      */
     public String getEntryMessage(Claim claim) {
         String entryMessage = claim.getEntryMessage();
-        return entryMessage == null ? "None" : entryMessage;
+        return entryMessage == null ? plugin.getSettings().getConfig().getString("settings.tooltip.none") : entryMessage;
     }
 
     /**
@@ -101,6 +101,6 @@ public class CrashClaimHook {
      */
     public String getExitMessage(Claim claim) {
         String exitMessage = claim.getExitMessage();
-        return exitMessage == null ? "None" : exitMessage;
+        return exitMessage == null ? plugin.getSettings().getConfig().getString("settings.tooltip.none") : exitMessage;
     }
 }

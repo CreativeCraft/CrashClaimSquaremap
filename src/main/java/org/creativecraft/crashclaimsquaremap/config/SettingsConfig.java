@@ -18,7 +18,7 @@ public class SettingsConfig {
     }
 
     /**
-     * Register the config.
+     * Register the settings config.
      */
     public void register() {
         settingsFile = new File(plugin.getDataFolder(), "settings.yml");
@@ -34,7 +34,7 @@ public class SettingsConfig {
     }
 
     /**
-     * Set the config defaults.
+     * Set the settings config defaults.
      */
     public void setDefaults() {
         settings.addDefault("settings.update-interval", 300);
@@ -50,6 +50,7 @@ public class SettingsConfig {
         settings.addDefault("settings.style.fill.color", colorToHex(Color.GREEN));
         settings.addDefault("settings.style.fill.opacity", 0.2D);
 
+        settings.addDefault("settings.tooltip.none", "None");
         settings.addDefault(
             "settings.tooltip.claim",
             """
@@ -121,7 +122,7 @@ public class SettingsConfig {
     }
 
     /**
-     * Retrieve the config.
+     * Retrieve the settings config.
      *
      * @return FileConfiguration
      */
