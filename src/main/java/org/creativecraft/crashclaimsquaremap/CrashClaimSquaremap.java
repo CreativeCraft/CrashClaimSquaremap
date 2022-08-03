@@ -22,7 +22,7 @@ public class CrashClaimSquaremap extends JavaPlugin {
         registerSettings();
         registerHooks();
 
-        new MetricsLite(this, 15709);
+        new MetricsLite(this, 15992);
     }
 
     @Override
