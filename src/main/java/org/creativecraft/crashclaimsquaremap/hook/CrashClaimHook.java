@@ -1,6 +1,5 @@
 package org.creativecraft.crashclaimsquaremap.hook;
 
-import net.crashcraft.crashclaim.CrashClaim;
 import net.crashcraft.crashclaim.claimobjects.BaseClaim;
 import net.crashcraft.crashclaim.claimobjects.Claim;
 import net.crashcraft.crashclaim.claimobjects.SubClaim;
@@ -36,12 +35,21 @@ public class CrashClaimHook {
      */
     public HashSet<Claim> getClaims(UUID uuid) {
         HashSet<Claim> claims = new HashSet<>();
-
         Long2ObjectOpenHashMap<ArrayList<Integer>> claimChunks = plugin.getCrashClaim().getDataManager().getClaimChunkMap(uuid);
 
-        claimChunks.values().forEach(x -> claims.add(
-            plugin.getCrashClaim().getApi().getClaim(x.get(0))
-        ));
+        if (claimChunks == null || claimChunks.isEmpty()) {
+            return null;
+        }
+
+        claimChunks.values().forEach(claim -> {
+            if (claim.isEmpty() || claim.get(0) == null) {
+                return;
+            }
+
+            claims.add(
+                plugin.getCrashClaim().getApi().getClaim(claim.get(0))
+            );
+        });
 
         if (claims.isEmpty()) {
             return null;
