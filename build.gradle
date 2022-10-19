@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'org.creativecraft'
-version = '1.0.1'
+version = '1.0.2'
 
 sourceCompatibility = '16'
 targetCompatibility = '16'
@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
   compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT'
-  compileOnly 'xyz.jpenilla:squaremap-api:1.1.6'
+  compileOnly 'xyz.jpenilla:squaremap-api:1.1.8'
   compileOnly fileTree(dir: 'libs', include: '*.jar')
   implementation 'org.bstats:bstats-bukkit-lite:1.8'
 }

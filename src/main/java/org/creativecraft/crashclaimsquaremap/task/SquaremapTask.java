@@ -92,7 +92,10 @@ public class SquaremapTask extends BukkitRunnable {
 
         rect.markerOptions(options);
 
-        String markerId = "crashclaim_" + world.getName() + "_region_" + Long.toHexString(claim.getId());
+        String markerId = "crashclaim_" +
+            world.getName().replaceAll("\\s+", "_").toLowerCase() +
+            "_region_" +
+            Long.toHexString(claim.getId());
 
         this.provider.addMarker(Key.of(markerId), rect);
     }
